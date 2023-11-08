@@ -1,0 +1,17 @@
+.boardMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.boardmain h4 {
+  color: #5a5a65;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+.boardMain h2 {
+  font-weight: 700;
+  font-size: 32px;
+}

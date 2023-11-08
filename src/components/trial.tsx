@@ -5,23 +5,42 @@ import {
   Droppable,
 } from "@hello-pangea/dnd";
 import React, { useState } from "react";
+import Card from "./kanban/card/card";
 
 const listItems = [
   {
     id: "1",
-    name: "Study Spanish",
+    name: <Card/>,
   },
   {
     id: "2",
-    name: "Workout",
+    name: <Card/>,
   },
   {
     id: "3",
-    name: "Film Youtube",
+    name: <Card/>,
   },
   {
     id: "4",
-    name: "Grocery Shop",
+    name: <Card/>,
+  },
+];
+const listItems2 = [
+  {
+    id: "5",
+    name: "Study ",
+  },
+  {
+    id: "6",
+    name: "Wor",
+  },
+  {
+    id: "7",
+    name: "Film ",
+  },
+  {
+    id: "8",
+    name: "Grocer",
   },
 ];
 
@@ -37,8 +56,17 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
   ...draggableStyle,
 });
 
+const style: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+const style2: React.CSSProperties = {
+  display: "flex",
+};
 function Trial() {
   const [todo, setTodo] = useState(listItems);
+  const [todo2, setTodo2] = useState(listItems2);
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
@@ -60,6 +88,7 @@ function Trial() {
               className="todo"
               {...provided.droppableProps}
               ref={provided.innerRef}
+        
             >
               {todo.map(({ id, name }, index) => {
                 return (

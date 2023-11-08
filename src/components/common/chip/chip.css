@@ -1,0 +1,8 @@
+.ChipMain {
+  width: 100%;
+  min-width:110px ;
+  max-width: 150px;
+  border-radius: 20px;
+  background-color: var(--LightGrey);
+  padding: 4px 12px;
+}

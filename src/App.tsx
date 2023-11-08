@@ -2,6 +2,11 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Trial from "./components/trial";
+import Card from "./components/kanban/card/card";
+import Column from "./components/kanban/column/column";
+import MegaCombo from "./components/trialcombo";
+import Board from "./components/kanban/board/board";
+import Kanban from "./components/kanban/kanban";
 
 function App() {
   return (
@@ -20,7 +25,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Trial />
+    
+     <Kanban/>
+      
     </div>
   );
 }

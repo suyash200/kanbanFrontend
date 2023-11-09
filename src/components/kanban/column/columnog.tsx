@@ -39,7 +39,7 @@ import {
       if (!destination) return;
       const items = Array.from(todo);
       const [newOrder] = items.splice(source.index, 1);
-      items.splice(destination.index, 0, newOrder);
+      items.splice(destination.index, 1, newOrder);
       setTodo(items);
     };
     useEffect(()=>{},[todo])

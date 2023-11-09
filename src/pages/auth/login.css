@@ -1,0 +1,21 @@
+.mainComp {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  /* filter: drop-shadow(0.6rem 0.6rem 1rem rgba(183, 183, 189, 0.8));  */
+}
+.mainComp button {
+  height: 42px;
+  width: 72px;
+}
+.forms {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.forms input {
+  width: 350px;
+  height: 32px;
+}

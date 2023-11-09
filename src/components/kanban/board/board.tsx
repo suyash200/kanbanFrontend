@@ -1,16 +1,9 @@
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import { DragDropContext } from "@hello-pangea/dnd";
 import Column from "../column/column";
 import "./board.css";
-import Card from "../card/card";
-import ColumnOg from "../column/columnog";
-import {
-  DragStart,
-  DragUpdate,
-  DropResult,
-  OnBeforeDragStartResponder,
-} from "react-beautiful-dnd";
-import { useState } from "react";
-import { number } from "yargs";
+import { DragStart, DragUpdate, DropResult } from "react-beautiful-dnd";
+import { BoardT } from "../../../pages/dashboard/dashboard";
+import { EditBoard } from "../../../api/auth/kanban";
 
 const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
   padding: 10,
@@ -24,81 +17,45 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
   ...draggableStyle,
 });
 
-const task = [
-  [
-    {
-      id: "12",
-      name: "Study",
-      description: "somesd",
-    },
-    {
-      id: "45",
-      name: "Wor",
-      description: "some",
-    },
-  ],
-  [
-    {
-      id: "34",
-      name: "Studys",
-      description: "somead",
-    },
-    {
-      id: "4",
-      name: "Wo2r",
-      description: "some2",
-    },
-  ],
-  [
-    {
-      id: "3",
-      name: "Stud",
-      description: "som3e",
-    },
-    {
-      id: "5",
-      name: "Wo2r3",
-      description: "some32",
-    },
-  ],
-];
-export default function Board() {
-  const [todo, setTodo] = useState(task);
-  var sId: number;
-  var sIndex: string;
-  const onDragEnd = (result: DropResult) => {
-    // const items = Array.from(todo);
-    // const { source, destination } = result;
-    // if (destination === null) {
-    //   console.log(source, destination);
-    //   todo[sId].push(items[+source.droppableId][source.index]);
-    // }
-    // if (!destination) return;
-    // const [newOrder] = items.splice(destination.index, 1);
-    // items.splice(destination?.index, 0, newOrder);
-    // setTodo(items);
-    // sIndex = result.destination?.droppableId as string;
-    // sId = result.destination?.index as number;
+export default function Board({ name, description, kanban }: BoardT) {
+  var sIndex: string | number;
+  const onDragEnd = async (result: DropResult) => {
+    const { destination, source } = result;
+    const items = Object(kanban);
+    if (destination === null || undefined) {
+      console.log("he");
+
+      return;
+    }
+
+    console.log(kanban);
+
+     const res = EditBoard(name, kanban);
   };
   const OnDragUpdate = (update: DragUpdate) => {
     const { destination, source } = update;
-    sId = update.source.index;
-    sIndex = update.source.droppableId;
-    const items = Array.from(todo);
-    if (!destination) return;
-    if (destination === null) {
-      console.log(sId, sIndex);
-      items[sId].push(items[+source.droppableId][source.index]);
+    const items = Object(kanban);
+    if (!destination) {
+      console.log("he");
+      return;
     }
-    const buffer = items[+source.droppableId][source.index]; //buffer to note the element changed
-    items[+source.droppableId].splice(source.index, 1);
-    items[+destination.droppableId].push(buffer);
-    // setTodo(items);
+    if (source.droppableId === destination.droppableId) {
+      const buffer = items[`${source.droppableId}`][`${destination.index}`];
+      items[`${destination.droppableId}`].splice(destination.index, 1, buffer);
+      // items[`${destination.droppableId}`].splice(destination.index, 0);
+      kanban = items;
+      return;
+    }
+    const buffer = items[`${source.droppableId}`][`${source.index}`];
+    items[`${destination.droppableId}`].splice(destination.index, 0, buffer);
+    kanban = items;
+    items[`${source.droppableId}`].splice(source.index, 1);
+    kanban = items;
   };
 
   const handleAddTask = (drag: DragStart) => {
-    const list = Array.from(todo);
-    list[sId].push({ id: "sf", name: "sdf", description: "sdf" });
+    // const list = Array.from(todo);
+    // list[sId].push({ id: "sf", name: "sdf", description: "sdf" });
   };
 
   return (
@@ -106,25 +63,25 @@ export default function Board() {
       <DragDropContext onDragEnd={onDragEnd} onDragUpdate={OnDragUpdate}>
         <div className="column">
           <Column
-            key="start"
-            id={0}
-            task={task[0]}
+            id={69}
+            task={kanban?.todo}
             handleAdd={handleAddTask}
             Title="Todo"
             color="white"
+            DropId="todo"
           />
           <Column
-            key="middle"
+            DropId="inProgress"
             id={1}
-            task={task[1]}
+            task={kanban?.inProgress}
             handleAdd={handleAddTask}
             Title="In Progress"
             color="Lavender"
           />
           <Column
-            key="end"
+            DropId="done"
             id={2}
-            task={task[2]}
+            task={kanban?.done}
             handleAdd={handleAddTask}
             Title="Completed"
             color="#FFDCE0"

@@ -1,3 +1,3 @@
-export default function AppContext(){
-    
-}
+import { createContext } from "react";
+
+export const BoardContext = createContext([]);

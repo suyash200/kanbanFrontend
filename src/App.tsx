@@ -1,33 +1,21 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Trial from "./components/trial";
-import Card from "./components/kanban/card/card";
-import Column from "./components/kanban/column/column";
-import MegaCombo from "./components/trialcombo";
-import Board from "./components/kanban/board/board";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Login from "./pages/auth/login";
+import Dashboard from "./pages/dashboard/dashboard";
 import Kanban from "./components/kanban/kanban";
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    
-     <Kanban/>
-      
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/board/:name" element={<Kanban />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

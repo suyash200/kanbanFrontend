@@ -21,15 +21,15 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
 
 interface columprops {
   id: number;
-  key: string;
+  DropId: string ;
   task: task[];
-  handleAdd: any;
+  handleAdd?: any;
   Title: string;
   color: string;
 }
 export default function Column({
   id,
-  key,
+  DropId,
   task,
   handleAdd,
   Title,
@@ -44,7 +44,7 @@ export default function Column({
   });
   const addItem = async () => {
     const newTaskId = uuidv4();
-    console.log(newTaskId);
+    // console.log(newTaskId);
     setNewTask({
       id: newTaskId,
       name: newtask.name,
@@ -53,6 +53,7 @@ export default function Column({
 
     task.push(newtask);
   };
+  //  console.log(task)
   return (
     <div className="ColumnMain">
       <div
@@ -68,13 +69,12 @@ export default function Column({
         <IoAddOutline
           onClick={() => {
             setModal(!modal);
-            console.log(todo);
           }}
           size={32}
         />
       </div>
 
-      <Droppable droppableId={`${id}`} key={key}>
+      <Droppable droppableId={DropId} key={DropId}>
         {(provided) => (
           <div
             className="todo"
@@ -84,9 +84,10 @@ export default function Column({
           >
             {" "}
             {provided.placeholder}
-            {todo.map(({ id, name, description }, index) => {
+            {task?.map(({ id, name, description }, index) => {
+
               return (
-                <Draggable key={id} draggableId={id} index={index}>
+                <Draggable key={uuidv4()} draggableId={id} index={index}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}

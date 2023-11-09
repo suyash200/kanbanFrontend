@@ -4,14 +4,19 @@
   flex-direction: column;
   align-items: start;
   justify-content: start;
+
 }
-.boardmain h4 {
+.subheading {
   color: #5a5a65;
-  font-size: 14px;
-  font-style: normal;
+  font-size: 16px;
   font-weight: 400;
 }
 .boardMain h2 {
   font-weight: 700;
   font-size: 32px;
+}
+
+.board{
+  background-color: wheat;
+  justify-self: center;
 }

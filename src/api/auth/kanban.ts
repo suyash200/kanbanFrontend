@@ -34,3 +34,12 @@ export async function EditBoard(
   );
   return req;
 }
+
+export async function CreateBoard(body: { name: string; description: string }) {
+  const req = instance.post(`kanban/`, body, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return req;
+}

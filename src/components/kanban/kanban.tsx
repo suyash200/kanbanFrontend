@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BoardT } from "../../pages/dashboard/dashboard";
 import Board from "./board/board";
 import "./kanban.css";
@@ -9,11 +9,16 @@ import { GetBoard } from "../../api/auth/kanban";
 export default function KanbanB() {
   const [boards, setBoards] = useState<BoardT>();
   const { name } = useParams();
+  const navigate = useNavigate();
 
   const getAllBoard = async () => {
-    const res = await GetBoard(name);
-    res.status === 200 ? setBoards(res.data[0]) : console.log("hellow");
-    return res;
+    try {
+      const res = await GetBoard(name);
+      res.status === 200 ? setBoards(res.data[0]) : console.log("hellow");
+      return res;
+    } catch (error) {
+      navigate("/404");
+    }
   };
 
   useEffect(() => {

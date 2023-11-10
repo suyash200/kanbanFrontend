@@ -15,7 +15,7 @@ export interface BoardT {
     inProgress: task[];
     done: task[];
   };
-  reload:any
+  reload: any;
 }
 export default function Dashboard() {
   const [boards, setBoards] = useState<BoardT[]>();
@@ -26,9 +26,13 @@ export default function Dashboard() {
   });
 
   const getAllBoard = async () => {
-    const res = await GetAllBoardsApi();
-    res.status === 200 ? setBoards(res.data) : console.log("hellow");
-    return res;
+    try {
+      const res = await GetAllBoardsApi();
+      res.status === 200 ? setBoards(res.data) : console.log("hellow");
+      return res;
+    } catch (error) {
+      navigate("/404");
+    }
   };
 
   useEffect(() => {
@@ -70,9 +74,12 @@ export default function Dashboard() {
           </h2>
           <h4>New tasks pending...</h4>
           <center>
-            <IoAddCircle size={45} onClick={(e)=>{
-              setModal(!modal)
-            }} />
+            <IoAddCircle
+              size={45}
+              onClick={(e) => {
+                setModal(!modal);
+              }}
+            />
           </center>
         </div>
       </div>
@@ -105,11 +112,11 @@ export default function Dashboard() {
             <center style={{ display: "flex", gap: "80px" }}>
               {" "}
               <button
-                onClick={ async(e) => {
+                onClick={async (e) => {
                   e.preventDefault();
                   // boards?.push({newtask})
-                  const res=await CreateBoard(newtask)
-                  res.status===200?getAllBoard():console.log('bit adde')
+                  const res = await CreateBoard(newtask);
+                  res.status === 200 ? getAllBoard() : console.log("bit adde");
                   setModal(!modal);
                 }}
                 className="button"

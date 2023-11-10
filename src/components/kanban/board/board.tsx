@@ -1,7 +1,7 @@
 import { DragDropContext } from "@hello-pangea/dnd";
 import Column from "../column/column";
 import "./board.css";
-import { DragStart, DragUpdate, DropResult } from "react-beautiful-dnd";
+import { DragUpdate, DropResult } from "react-beautiful-dnd";
 import { BoardT } from "../../../pages/dashboard/dashboard";
 import { EditBoard } from "../../../api/auth/kanban";
 
@@ -9,7 +9,7 @@ export default function Board({ name, description, kanban, reload }: BoardT) {
   var sIndex: string | number;
   const onDragEnd = async (result: DropResult) => {
     const { destination, source } = result;
-    const items = Object(kanban);
+    // const items = Object(kanban);
     if (!destination) {
       return;
     }
@@ -67,7 +67,7 @@ export default function Board({ name, description, kanban, reload }: BoardT) {
       items[`${source.droppableId}`].splice(source.index, 1);
       items[`${destination.droppableId}`].push(buffer);
       const length = items[`${destination.droppableId}`].length as number;
-      const buffer2 = items[`${destination.droppableId}`][length];
+      // const buffer2 = items[`${destination.droppableId}`][length];
       // items[`${destination.droppableId}`][`${length}`] =
       //   items[`${destination.droppableId}`][`${destination.index}`];
       // items[`${destination.droppableId}`][`${destination.index}`] = buffer2;

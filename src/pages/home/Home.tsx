@@ -7,8 +7,9 @@ const Home = () => {
 
   const onButtonClick = () => {
     // You'll update this function later
+    navigate("/login");
   };
- 
+
   return (
     <div className="mainContainer">
       <div className={"titleContainer"}>

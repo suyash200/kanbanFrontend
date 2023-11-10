@@ -58,7 +58,10 @@ export default function Login() {
             placeholder="Password"
           />
         </div>
-
+        <a href="/signup">
+          {" "}
+          <h4> dont have an Account? Signup</h4>
+        </a>
         <button
           onClick={(e) => {
             onSubmit();

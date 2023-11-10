@@ -14,14 +14,14 @@ const Home = () => {
       <div className={"titleContainer"}>
         <div>Welcome!</div>
       </div>
-      <div>This is the home page.</div>
+      <div  onClick={onButtonClick}>click here to login</div>
       <div className={"buttonContainer"}>
-        <input
+        {/* <input
           className={"inputButton"}
           type="button"
-          onClick={onButtonClick}
+         
           //   value={loggedIn ? "Log out" : "Log in"}
-        />
+        /> */}
         {/* {loggedIn ? <div>Your email address is {email}</div> : <div />} */}
       </div>
     </div>

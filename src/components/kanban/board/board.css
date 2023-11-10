@@ -1,0 +1,12 @@
+.boardMain {
+  background-color: var(--offwhite);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1090px;
+}
+.column {
+  display: flex;
+}

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { IoAddOutline } from "react-icons/io5";
 import { task } from "../../../types/globalInterface";
 import { v4 as uuidv4 } from "uuid";
+import { BoardT } from "../../../pages/dashboard/dashboard";
 
 const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
   padding: 12,
@@ -21,9 +22,9 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
 
 interface columprops {
   id: number;
-  DropId: string ;
+  DropId: string;
   task: task[];
-  handleAdd?: any;
+  handleChange?: any;
   Title: string;
   color: string;
 }
@@ -31,12 +32,13 @@ export default function Column({
   id,
   DropId,
   task,
-  handleAdd,
+  handleChange,
   Title,
   color,
 }: columprops) {
-  const [todo, setTodo] = useState(task);
+  var todo = structuredClone(task);
   const [modal, setModal] = useState<boolean>(false);
+
   const [newtask, setNewTask] = useState<task>({
     id: uuidv4(),
     name: "",
@@ -44,16 +46,26 @@ export default function Column({
   });
   const addItem = async () => {
     const newTaskId = uuidv4();
-    // console.log(newTaskId);
     setNewTask({
       id: newTaskId,
       name: newtask.name,
       description: newtask.description,
     });
-
     task.push(newtask);
+    handleChange();
   };
-  //  console.log(task)
+
+  const handleDelete = (id: number) => {
+    task.splice(id, 1);
+
+    handleChange();
+  };
+
+  const handleEdit = (id: number, buffer: task) => {
+    task[id] = buffer;
+    handleChange();
+    console.log(task);
+  };
   return (
     <div className="ColumnMain">
       <div
@@ -85,7 +97,11 @@ export default function Column({
             {" "}
             {provided.placeholder}
             {task?.map(({ id, name, description }, index) => {
-
+              if (id === undefined) {
+                console.log('id undefined')
+                id= name 
+               return <></>;
+              }
               return (
                 <Draggable key={uuidv4()} draggableId={id} index={index}>
                   {(provided, snapshot) => (
@@ -98,7 +114,13 @@ export default function Column({
                         provided.draggableProps.style
                       )}
                     >
-                      <Card Title={name} description={description} />
+                      <Card
+                        Title={name}
+                        description={description}
+                        handleDelete={handleDelete}
+                        index={index}
+                        handleEdit={handleEdit}
+                      />
                     </div>
                   )}
                 </Draggable>

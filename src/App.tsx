@@ -4,6 +4,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/auth/login";
 import Dashboard from "./pages/dashboard/dashboard";
 import Kanban from "./components/kanban/kanban";
+import Signup from "./pages/auth/signup";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/board/:name" element={<Kanban />} />
         </Routes>

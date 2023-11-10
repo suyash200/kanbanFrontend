@@ -1,27 +1,32 @@
 import { useNavigate } from "react-router-dom";
-import { LoginApi } from "../../api/auth/login";
+import { Register } from "../../api/auth/login";
 import "./login.css";
 import { useState } from "react";
 
-export default function Login() {
+export default function Signup() {
   const navigate = useNavigate();
   const [login, setLogin] = useState<{
     email: string;
     password: string;
+    firstName: string;
+    lastName: string;
   }>({
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
   });
   const onSubmit = async () => {
     try {
-      const res = await LoginApi(login);
-
-      if (res?.status === 200) {
-        localStorage.setItem("token", res?.data.token);
-        navigate("/dashboard");
+      const res = await Register(login);
+      // res.status === 200 ? localStorage.setItem("token", res.data.token) : null;
+      if (res.status === 200) {
+        navigate("/login");
       }
+
+      return res;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -38,9 +43,25 @@ export default function Login() {
       }}
     >
       <div className="mainComp">
-        <h1>Login</h1>
+        <h1>SignUp</h1>
 
         <div className="forms">
+          <input
+            value={login.firstName}
+            onChange={(e) => {
+              setLogin({ ...login, firstName: e.target.value });
+            }}
+            type="text"
+            placeholder="first name"
+          />
+          <input
+            value={login.lastName}
+            onChange={(e) => {
+              setLogin({ ...login, lastName: e.target.value });
+            }}
+            type="text"
+            placeholder="Last Name"
+          />
           <input
             value={login.email}
             onChange={(e) => {

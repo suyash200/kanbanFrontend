@@ -40,6 +40,7 @@ export default function KanbanB() {
             owner={boards?.owner!}
             description={boards?.description!}
             kanban={boards?.kanban!}
+            reload={getAllBoard}
           />
           {/* </KanbanContext.Provider> */}
         </div>

@@ -1,6 +1,8 @@
 .cardsContainer {
   display: flex;
   gap: 24px;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
@@ -25,7 +27,7 @@
 
 .dailog {
   /* margin: auto auto auto auto; */
- 
+
   width: 300px;
   border: none;
   margin: auto auto auto auto;
@@ -48,5 +50,3 @@
   padding: 24px;
   gap: 24px;
 }
-
-

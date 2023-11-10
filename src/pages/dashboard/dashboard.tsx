@@ -15,6 +15,7 @@ export interface BoardT {
     inProgress: task[];
     done: task[];
   };
+  reload:any
 }
 export default function Dashboard() {
   const [boards, setBoards] = useState<BoardT[]>();

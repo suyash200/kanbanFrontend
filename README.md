@@ -1,7 +1,7 @@
 
 
 
-#Kanban
+# Kanban
 This is a Kanban board frontend project written in TypeScript and React. It allows you to create multiple Kanban boards to simplify your tasks and edit, delete, and add tasks to your Kanban boards.
 
  ### Features

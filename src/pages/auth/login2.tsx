@@ -65,7 +65,11 @@ export default function Login2() {
         />
         {/* <label className="errorLabel">{passwordError}</label> */}
       </div>
-      <br />
+      <br />{" "}
+      <h4>
+        {" "}
+        Dont have an Account? <a href="/signup">Signup</a>{" "}
+      </h4>
       <div className={"inputContainer"}>
         <input
           className={"inputButton"}

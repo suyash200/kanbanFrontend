@@ -93,7 +93,10 @@ export default function Signup2() {
           <br />
 
           {/* <label className="errorLabel">{passwordError}</label> */}
-
+          <h4>
+        {" "}
+       have an Account? <a href="/login">Signup</a>{" "}
+      </h4>
           <br />
           <div className={"inputContainer"}>
             <input

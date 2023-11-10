@@ -1,3 +1,17 @@
+
+
+
+# Kanban
+This is a Kanban board frontend project written in TypeScript and React. It allows you to create multiple Kanban boards to simplify your tasks and edit, delete, and add tasks to your Kanban boards.
+
+ ### Features
+Create multiple Kanban boards
+Add, edit, and delete tasks
+Drag and drop tasks between columns
+Save and load Kanban boards
+Usage
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +58,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+##Contributing
+If you have any feedback or suggestions, please feel free to open an issue.

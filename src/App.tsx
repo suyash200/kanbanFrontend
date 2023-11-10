@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
-import Login from "./pages/auth/login";
 import Dashboard from "./pages/dashboard/dashboard";
 import Kanban from "./components/kanban/kanban";
-import Signup from "./pages/auth/signup";
+import Login2 from "./pages/auth/login2";
+import Signup2 from "./pages/auth/signup2";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login2 />} />
+          <Route path="/signup" element={<Signup2 />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/board/:name" element={<Kanban />} />
         </Routes>

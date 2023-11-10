@@ -1,21 +1,73 @@
-.mainComp {
-  display: flex;
+.mainContainer {
   flex-direction: column;
-  gap: 24px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  /* filter: drop-shadow(0.6rem 0.6rem 1rem rgba(183, 183, 189, 0.8));  */
+  height: 100vh;
 }
-.mainComp button {
-  height: 42px;
-  width: 72px;
-}
-.forms {
+
+.titleContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  font-size: 64px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
 }
-.forms input {
-  width: 350px;
-  height: 32px;
+
+.resultContainer,
+.historyItem {
+  flex-direction: row;
+  display: flex;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.historyContainer {
+  flex-direction: column;
+  display: flex;
+  height: 200px;
+  align-items: center;
+  flex-grow: 5;
+  justify-content: flex-start;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.inputContainer > .errorLabel {
+  color: red;
+  font-size: 12px;
+}
+
+.inputBox {
+  height: 48px;
+  width: 400px;
+  font-size: large;
+  border-radius: 8px;
+  border: 1px solid grey;
+  padding-left: 8px;
+}
+input[type="button"] {
+  border: none;
+  background: cornflowerblue;
+  color: white;
+  padding: 12px 24px;
+  margin: 8px;
+  font-size: 24px;
+  border-radius: 8px;
+  cursor: pointer;
 }

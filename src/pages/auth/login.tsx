@@ -14,11 +14,17 @@ export default function Login() {
   });
   const onSubmit = async () => {
     try {
-      const res = await LoginApi(login);
+      if (login.email === "" || login.password === "") {
+        alert("enter credentials");
+      } else {
+        const res = await LoginApi(login);
 
-      if (res?.status === 200) {
-        localStorage.setItem("token", res?.data.token);
-        navigate("/dashboard");
+        if (res?.status === 200) {
+          localStorage.setItem("token", res?.data.token);
+          localStorage.setItem("login", "true");
+
+          navigate("/dashboard");
+        }
       }
     } catch (error) {
       console.log(error);
